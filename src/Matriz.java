@@ -1,24 +1,22 @@
 public class Matriz {
-	public int x,y;
-	private int[][]m;
+	public int x, y;
+	private int[][] m;
 
-	
-	public Matriz(int x,int y){
+	public Matriz(int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.m = new int[x][y];
 	}
-	
+
 	public void mostrarMatriz() {
 		for (int i = 0; i < this.x; i++) {
 			for (int j = 0; j < this.y; j++) {
-				System.out.print(this.m[i][j]+"   ");
+				System.out.print(this.m[i][j] + "   ");
 			}
 			System.out.println();
 		}
 	}
 
-	
 	private void Ordenar(int[] vec) {
 		for (int i = 0; i < vec.length; i++) {
 			for (int j = 0; j < vec.length; j++) {
@@ -30,7 +28,7 @@ public class Matriz {
 			}
 		}
 	}
-	
+
 	public int getX() {
 		return x;
 	}
@@ -50,11 +48,16 @@ public class Matriz {
 	public int[][] getM() {
 		return m;
 	}
-	
+
 	public void setM(int[][] m) {
 		this.m = m;
 	}
-	
+
+	/**
+	 * Escribir un método en Java que permita comprobar si la diagonal principal de
+	 * una matriz cuadrada de enteros tiene en cada posición un valor igual a la
+	 * suma de todos los valores de las posiciones anteriores de dicha diagonal.
+	 */
 	public boolean consigna0() {
 		int sum = 0, j;
 		for (int i = 1; i < this.x; i++) {
@@ -71,18 +74,28 @@ public class Matriz {
 		return true;
 	}
 
+	/**
+	 * 
+	 * Escribir un método en Java que permita comprobar si la multiplicación de
+	 * todos los valores de una matriz numérica, dará 0 o no
+	 */
 	public boolean consigna01() {
 		int i, j;
-		for(i = 0; i<this.x ; i++) {
-			for(j = 0; j<this.y; j++) {
-				if(this.m[i][j] == 0) {
+		for (i = 0; i < this.x; i++) {
+			for (j = 0; j < this.y; j++) {
+				if (this.m[i][j] == 0) {
 					return true;
 				}
 			}
 		}
 		return false;
 	}
-	
+
+	/**
+	 * Escribir un método en Java que dada una matriz numérica, devuelva una matriz
+	 * con la misma cantidad de elementos, pero donde cada valor es la suma de sus
+	 * adyacentes originales (arriba, abajo, izquierda, y derecha; si existen)
+	 */
 	public void consigna02() {
 		int[][] matriz1 = new int[this.x][this.y];
 		int valor = 0;
@@ -104,9 +117,9 @@ public class Matriz {
 
 				}
 				matriz1[i][j] = valor;
-				
+
 			}
-	
+
 		}
 		for (int t = 0; t < matriz1.length; t++) {
 			for (int p = 0; p < matriz1[t].length; p++) {
@@ -114,10 +127,15 @@ public class Matriz {
 			}
 			System.out.println();
 		}
-		
 
 	}
-	
+
+	/**
+	 * 
+	 * Escribir un método en Java que de una matriz numérica dada, devuelva un
+	 * vector con n elementos, donde cada elemento es la moda de una fila. Si
+	 * hubiese más de una moda, se deberá utilizar la de mayor valor
+	 */
 	public int[] consigna03() {
 		int[] vec = new int[this.y];
 		int[] vec2 = new int[this.x];
@@ -156,46 +174,29 @@ public class Matriz {
 			vec2[i] = moda1;
 
 		}
-	       for(int m=0; m<vec2.length; m++) {
-	    	   System.out.print(vec2[m]+" ");
-	       }
-	       System.out.println();
+		for (int m = 0; m < vec2.length; m++) {
+			System.out.print(vec2[m] + " ");
+		}
+		System.out.println();
 		return vec2;
 	}
 
+	/**
+	 * Escribir un método en Java que de una matriz cuadrada dada, devuelva una
+	 * matriz con n filas, donde cada una tendrá los datos de una de las diagonales
+	 * (de abajo a la izquierda hacia arriba a la derecha)
+	 */
 	public void consigna04() {
-		/*  System.out.print(m[3][0]+" "); 
-		  System.out.println();
-		  System.out.print(m[2][0]+" "); 
-		  System.out.print(m[3][1]+" ");
-		  System.out.println(); 
-		  System.out.print(m[1][0]+" ");
-		  System.out.print(m[2][1]+" "); 
-		  System.out.print(m[3][2]+" ");
-		  System.out.println(); 
-		  System.out.print(m[0][0]+" ");
-		  System.out.print(m[1][1]+" "); 
-		  System.out.print(m[2][2]+" ");
-		  System.out.print(m[3][3]+" "); 
-		  System.out.println();
-		 System.out.print(m[0][1]+" "); 
-		  System.out.print(m[1][2]+" ");
-		  System.out.print(m[2][3]+" "); 
-		 System.out.println();
-		  System.out.print(m[0][2]+" "); 
-		  System.out.print(m[1][3]+" ");
-		  System.out.println(); System.out.print(m[0][3]+" ");
-		 */
 		int i = (this.x - 1);
 		int j = 0;
 		int limitJ = 0;
 		int resta = 1;
 		for (int x = 0; x < this.x; x++) {
-			
+
 			j = 0;
 			i = (this.x - resta);
 			while (i < this.x && j <= limitJ) {
-				System.out.print(m[i][j]+" ");
+				System.out.print(m[i][j] + " ");
 				j++;
 				i++;
 			}
@@ -203,23 +204,22 @@ public class Matriz {
 			limitJ++;
 			System.out.println();
 		}
-		int limitF = (this.x-1);
-		int v = 0, n = 1, nL=0;
-		for(int l=0; l<(this.x-1); l++) {
+		int limitF = (this.x - 1);
+		int v = 0, n = 1, nL = 0;
+		for (int l = 0; l < (this.x - 1); l++) {
 			n += nL;
-			while( v< limitF && n<this.x) {
-				System.out.print(m[v][n]+" ");
+			while (v < limitF && n < this.x) {
+				System.out.print(m[v][n] + " ");
 				v++;
 				n++;
 			}
 			System.out.println();
 			limitF--;
 			nL++;
-			n=1;
-			v=0;
+			n = 1;
+			v = 0;
 		}
 	}
 }
-		
 
 
